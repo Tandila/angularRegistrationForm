@@ -1,27 +1,27 @@
-header{
+header {
   display: flex;
   justify-content: space-between;
 }
-.nav{
+.nav {
   display: flex;
   background: red;
   margin: -8px;
   align-items: center;
   padding: 0 1%;
   width: 100%;
-  img{
-    display: block;
-    margin-right: 10px;
-    height: 70px;
-  }
 }
-.reg{
+.nav img {
+  display: block;
+  margin-right: 10px;
+  height: 70px;
+}
+.reg {
   display: block;
   background: yellow;
   margin: -8px;
-  padding:10px;
+  padding: 10px;
 }
-.btn{
+.btn {
   margin-top: 10px;
 }
-
+/*# sourceMappingURL=app.component.css.map */

@@ -1,0 +1,23 @@
+<p>register works!</p>
+<div>
+  <input type="text" class="form-control" placeholder="username"
+         [(ngModel)]="username"
+         (keydown.enter)="addUser()"
+  >
+  <input type="text" class="form-control" placeholder="password"
+        [(ngModel)]="password"
+         (keydown.enter)="addUser()"
+  >
+  <button class="btn" (click)="addUser()">register</button>
+</div>
+
+<table>
+  <tr>
+    <th>user</th>
+    <th>password</th>
+  </tr>
+  <tr *ngFor="let user of users">
+    <td>{{user.username}}</td>
+    <td>{{user.password}}</td>
+  </tr>
+</table>
