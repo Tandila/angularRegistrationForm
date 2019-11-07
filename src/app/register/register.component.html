@@ -1,14 +1,19 @@
 <p>register works!</p>
 <div>
+  <label for="username"></label>
   <input type="text" class="form-control" placeholder="username"
-         [(ngModel)]="username"
-         (keydown.enter)="addUser()"
+         [(ngModel)]="dataservice.username"
+         (keydown.enter)="dataservice.addUser()"
+         id="username"
   >
+  <label for="password"></label>
   <input type="text" class="form-control" placeholder="password"
-        [(ngModel)]="password"
-         (keydown.enter)="addUser()"
+        [(ngModel)]="dataservice.password"
+         (keydown.enter)="dataservice.addUser()"
+         id="password"
   >
-  <button class="btn" (click)="addUser()">register</button>
+  <button class="btn" (click)="dataservice.addUser()">register</button>
+  <button class="btn" (click)="dataservice.delUsers()">delete</button>
 </div>
 
 <table>
@@ -16,8 +21,9 @@
     <th>user</th>
     <th>password</th>
   </tr>
-  <tr *ngFor="let user of users">
-    <td>{{user.username}}</td>
-    <td>{{user.password}}</td>
+  <tr *ngFor="let user of dataservice.users">
+    <td>{{ user.username }}</td>
+    <td>{{ user.password }}</td>
   </tr>
 </table>
+
