@@ -11,7 +11,6 @@ export class RegisterComponent {
 
   constructor(private dataservice: DataService)
   {
-    console.log(dataservice.getUsers());
 
   }
 

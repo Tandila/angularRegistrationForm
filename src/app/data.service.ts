@@ -17,7 +17,7 @@ export class DataService {
     }
   }
     getUsers(){
-       return localStorage.getItem('users');
+       console.log(localStorage.getItem('users'));
     }
 
     delUsers(){
