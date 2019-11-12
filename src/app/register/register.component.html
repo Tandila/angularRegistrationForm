@@ -1,31 +1,80 @@
-<p>register works!</p>
-<div>
-  <label for="username"></label>
-  <input type="text" class="form-control" placeholder="username"
-         [(ngModel)]="dataservice.username"
-         (keydown.enter)="dataservice.addUser()"
-         id="username"
-  >
-  <label for="password"></label>
-  <input type="text" class="form-control" placeholder="password"
-        [(ngModel)]="dataservice.password"
-         (keydown.enter)="dataservice.addUser()"
-         id="password"
-  >
-  <button class="btn" (click)="dataservice.addUser()">register</button>
-  <button class="btn" (click)="dataservice.delUsers()">delete</button>
-</div>
+<div class="container">
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <h1>Forms</h1>
 
+    <div class="form-control">
+      <label>email</label>
+      <input type="text" placeholder="Email" formControlName="email">
+      <div
+        *ngIf="form.get('email').invalid && form.get('email').touched"
+        class="validation"
+      >
+        <small *ngIf="form.get('email').errors.required">
+          email can't be blank
+        </small>
+        <small *ngIf="form.get('email').errors.pattern">
+          enter valid email!!
+        </small>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <label>password</label>
+      <input type="password" placeholder="password" formControlName="password">
+
+      <div
+        *ngIf="form.get('password').invalid && form.get('password').touched"
+        class="validation"
+      >
+        <small *ngIf="form.get('password').errors.required">
+          password can't be blank
+        </small>
+        <small *ngIf="form.get('password').errors.minlength">
+          enter valid password min lenght {{form.get('password').errors.minlength.requiredLength}}.
+          now simbol quantity {{form.get('password').errors.minlength.actualLength}}
+        </small>
+
+      </div>
+    </div>
+
+    <div class="card" formGroupName="address">
+      <h2>address</h2>
+
+      <div class="form-control">
+        <label>country</label>
+
+        <select formControlName="country">
+          <option value="us">usa</option>
+          <option value="ge">georgia</option>
+          <option value="uk">ukraine</option>
+        </select>
+      </div>
+
+      <div class="form-control">
+        <input type="text" formControlName="city" placeholder="city">
+      </div>
+
+      <button class="btn" type="button" (click)="setCapital()" >chose city</button>
+    </div>
+
+    <button class="btn" type="submit" [disabled]="form.invalid">submit</button>
+
+  </form>
+</div>
 <table>
   <tr>
     <th>index</th>
     <th>user</th>
     <th>password</th>
+    <th>country</th>
+    <th>city</th>
   </tr>
-  <tr *ngFor="let user of dataservice.users; let ind = index">
+  <tr *ngFor="let user of users; let ind = index">
     <td>{{ ind + 1 }}</td>
     <td>{{ user.username }}</td>
     <td>{{ user.password }}</td>
+    <td>{{ user.address.country }}</td>
+    <td>{{ user.address.city }}</td>
   </tr>
 </table>
-<button (click)="dataservice.getUsers()">getuser</button>
+
