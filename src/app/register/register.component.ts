@@ -9,9 +9,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class RegisterComponent implements OnInit{
   form: FormGroup;
 
-  users = localStorage.getItem('users') ?
-    JSON.parse(localStorage.getItem('users')) : [];
-
+  users = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
 
   email = '';
   password = '';
@@ -40,7 +38,6 @@ export class RegisterComponent implements OnInit{
       const formData = {...this.form.value};
 
       console.log('Form Data:', formData);
-
 
       this.users.unshift({ username:this.form.value.email, password:this.form.value.password, address: this.form.value.address});
       localStorage.setItem('users', JSON.stringify(this.users));

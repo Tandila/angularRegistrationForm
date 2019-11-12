@@ -24,4 +24,8 @@ header {
 .btn {
   margin-top: 10px;
 }
+a {
+  text-decoration: none;
+  color: black;
+}
 /*# sourceMappingURL=app.component.css.map */
